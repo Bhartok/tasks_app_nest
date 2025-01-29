@@ -1,0 +1,99 @@
+### Get All users
+GET http://localhost:3000/users/
+
+### Create a user
+POST http://localhost:3000/auth/signup/
+Content-Type: application/json
+
+{
+  "email": "jose@d.com",
+  "password": "1234",
+  "name": "jose"
+}
+### Sign in
+POST http://localhost:3000/auth/signin/
+Content-Type: application/json
+
+{
+  "email": "jose@c.com",
+  "password": "1234"
+}
+
+### Get groups
+GET http://localhost:3000/groups/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNzBmOTZlMy00OWJmLTQzZTAtOTI0ZC04ZDdkODcwNTUwN2IiLCJpYXQiOjE3MzgxODE5MDIsImV4cCI6MTczODE4MjgwMn0.L04mf_ixkTfzS5rF1VmmxnH2dXR1zlbR-XcO8lAWey8
+### Get group by id
+GET http://localhost:3000/groups/da0b1e24-60a6-4d36-b80a-5d5151973c65
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNzBmOTZlMy00OWJmLTQzZTAtOTI0ZC04ZDdkODcwNTUwN2IiLCJpYXQiOjE3MzgxODE5MDIsImV4cCI6MTczODE4MjgwMn0.L04mf_ixkTfzS5rF1VmmxnH2dXR1zlbR-XcO8lAWey8
+
+### Delete group by id
+DELETE http://localhost:3000/groups/833ab3ce-98f9-4e4e-8d68-03fb378c09f6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNzBmOTZlMy00OWJmLTQzZTAtOTI0ZC04ZDdkODcwNTUwN2IiLCJpYXQiOjE3MzgxODE5MDIsImV4cCI6MTczODE4MjgwMn0.L04mf_ixkTfzS5rF1VmmxnH2dXR1zlbR-XcO8lAWey8
+### eliminate user from group
+DELETE  http://localhost:3000/groups/87690f8e-9afa-4d25-9b9c-01d5af460c83/9bef4c18-9c18-4823-8e05-f0e26a3e0225
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNzBmOTZlMy00OWJmLTQzZTAtOTI0ZC04ZDdkODcwNTUwN2IiLCJpYXQiOjE3MzgxODE5MDIsImV4cCI6MTczODE4MjgwMn0.L04mf_ixkTfzS5rF1VmmxnH2dXR1zlbR-XcO8lAWey8
+Content-Type: application/json
+### Asign roles
+POST http://localhost:3000/groups/87690f8e-9afa-4d25-9b9c-01d5af460c83/9bef4c18-9c18-4823-8e05-f0e26a3e0225
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNzBmOTZlMy00OWJmLTQzZTAtOTI0ZC04ZDdkODcwNTUwN2IiLCJpYXQiOjE3MzgxODE5MDIsImV4cCI6MTczODE4MjgwMn0.L04mf_ixkTfzS5rF1VmmxnH2dXR1zlbR-XcO8lAWey8
+Content-Type: application/json
+
+{"role":1}
+### Create group
+POST http://localhost:3000/groups/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNzBmOTZlMy00OWJmLTQzZTAtOTI0ZC04ZDdkODcwNTUwN2IiLCJpYXQiOjE3MzgxODE5MDIsImV4cCI6MTczODE4MjgwMn0.L04mf_ixkTfzS5rF1VmmxnH2dXR1zlbR-XcO8lAWey8
+Content-Type: application/json
+
+{
+  "name":"aaaaa de taco"
+}
+### Update group rules, success
+PUT http://localhost:3000/groups/cac73e37-edab-4f0b-9d1f-6948f739c1d2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZDA5N2NjYS1kNjMyLTRiMzUtOWFjNi1hODUwNTQ2NzBhNDYiLCJpYXQiOjE3MzgxNzA3OTksImV4cCI6MTczODE3MTY5OX0.-ZZyYAcWcKYuAuIDpbZLDVM9xrGnLe84SmR-XdCDVbY
+Content-Type: application/json
+
+{
+  "name":"Tareas de carboncio",
+  "description":"Estas son las tareas de carbon el gatito "
+}
+### Update group rules, fail because authorization
+PUT http://localhost:3000/groups/cac73e37-edab-4f0b-9d1f-6948f739c1d2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZDA5N2NjYS1kNjMyLTRiMzUtOWFjNi1hODUwNTQ2NzBhNDYiLCJpYXQiOjE3MzgxNzA3OTksImV4cCI6MTczODE3MTY5OX0.-ZZyYAcWcKYuAuIDpbZLDVM9xrGnLe84SmR-XdCDVbY
+Content-Type: application/json
+
+{
+  "name":"Tareas de taco",
+  "description":"Estas son las tareas de carbon el gatito "
+}
+###Create task
+POST http://localhost:3000/tasks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNzBmOTZlMy00OWJmLTQzZTAtOTI0ZC04ZDdkODcwNTUwN2IiLCJpYXQiOjE3MzgxODE5MDIsImV4cCI6MTczODE4MjgwMn0.L04mf_ixkTfzS5rF1VmmxnH2dXR1zlbR-XcO8lAWey8
+Content-Type: application/json
+
+{
+  "groupId": "da0b1e24-60a6-4d36-b80a-5d5151973c65",
+  "name": "comprar comida taco"
+}
+### Get all tasks
+GET http://localhost:3000/tasks
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNzBmOTZlMy00OWJmLTQzZTAtOTI0ZC04ZDdkODcwNTUwN2IiLCJpYXQiOjE3MzgxODE5MDIsImV4cCI6MTczODE4MjgwMn0.L04mf_ixkTfzS5rF1VmmxnH2dXR1zlbR-XcO8lAWey8
+Content-Type: application/json
+
+{
+  "groupId": "5ca32e24-2d5a-4e46-b571-a09f98d3690f"
+}
+### Get task by id
+GET http://localhost:3000/tasks/9880c78a-1c29-4b88-82c2-593f37ffbe54
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNzBmOTZlMy00OWJmLTQzZTAtOTI0ZC04ZDdkODcwNTUwN2IiLCJpYXQiOjE3MzgxODE5MDIsImV4cCI6MTczODE4MjgwMn0.L04mf_ixkTfzS5rF1VmmxnH2dXR1zlbR-XcO8lAWey8
+### Update task by id
+PUT http://localhost:3000/tasks/9880c78a-1c29-4b88-82c2-593f37ffbe54
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNzBmOTZlMy00OWJmLTQzZTAtOTI0ZC04ZDdkODcwNTUwN2IiLCJpYXQiOjE3MzgxODE5MDIsImV4cCI6MTczODE4MjgwMn0.L04mf_ixkTfzS5rF1VmmxnH2dXR1zlbR-XcO8lAWey8
+Content-Type: application/json
+
+{
+  "name": "Nuevvvo"
+}
+
+### delete task by id
+DELETE http://localhost:3000/tasks/9880c78a-1c29-4b88-82c2-593f37ffbe54
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjNzBmOTZlMy00OWJmLTQzZTAtOTI0ZC04ZDdkODcwNTUwN2IiLCJpYXQiOjE3MzgxODE5MDIsImV4cCI6MTczODE4MjgwMn0.L04mf_ixkTfzS5rF1VmmxnH2dXR1zlbR-XcO8lAWey8
